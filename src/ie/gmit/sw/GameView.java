@@ -19,6 +19,8 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private static final long serialVersionUID = 777L;
 	private static final int DEFAULT_IMAGE_INDEX = 0;
 	
+	ImageLoader loader;
+	
 	//Encapsulate the things that vary...
 	public static final int DEFAULT_VIEW_SIZE = 1280;
 	private static final int TILE_WIDTH = 128;
@@ -48,24 +50,13 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	}
 	
 	private void init() throws Exception {
-		tiles = loadImages("./resources/images/ground", tiles);
-		objects = loadImages("./resources/images/objects", objects);
-		player = new Sprite("Player 1", new Point(0, 0), loadImages("./resources/images/sprites/default", null));
+		loader = new ImageLoader();
+		tiles = loader.loadImages("./resources/images/ground", tiles);
+		objects = loader.loadImages("./resources/images/objects", objects);
+		player = new Sprite("Player 1", new Point(0, 0), loader.loadImages("./resources/images/sprites/default", null));
 	}
 	
-	//This method breaks the SRP
-	private BufferedImage[] loadImages(String directory, BufferedImage[] img) throws Exception {
-		File dir = new File(directory);
-		File[] files = dir.listFiles();
-		Arrays.sort(files, (s, t) -> s.getName().compareTo(t.getName()));
-		
-		img = new BufferedImage[files.length];
-		for (int i = 0; i < files.length; i++) {
-			img[i] = ImageIO.read(files[i]);
-		}
-		return img;
-	}
-
+	
 	public void toggleView() {
 		isIsometric = !isIsometric;
 		this.repaint();
