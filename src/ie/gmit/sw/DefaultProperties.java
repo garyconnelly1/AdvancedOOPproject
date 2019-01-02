@@ -22,5 +22,6 @@ public class DefaultProperties {
 	public static int getTileHeight() {
 		return TILE_HEIGHT;
 	}
+	
 
 }

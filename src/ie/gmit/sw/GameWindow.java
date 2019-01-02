@@ -9,6 +9,7 @@ public class GameWindow {
 	 */
 	
 	
+	private static GameView view;
 	private int[][] model = { 
 			{ 1, 0, 0, 0, 0, 0 , 0, 0, 0, 2},
 			{ 0, 1, 0, 0, 0, 0 , 0, 0, 0, 2},
@@ -39,7 +40,7 @@ public class GameWindow {
 	public GameWindow() throws Exception {
 		
 		KeyPressed keyListener = KeyPressed.getInstance();
-		GameView view = new GameView(model, objects);
+		view = new GameView(model, objects);
 		//Dimension d = new Dimension(GameView.DEFAULT_VIEW_SIZE, GameView.DEFAULT_VIEW_SIZE/2);
 		Dimension d = new Dimension(DefaultProperties.getDefaultViewSize(), DefaultProperties.getDefaultViewSize()/2);
 		view.setPreferredSize(d);
@@ -58,6 +59,11 @@ public class GameWindow {
 		f.setLocation(100, 100);
 		f.pack();
 		f.setVisible(true);
+	}
+	
+	// Simple Accessor method to access the game view.(Abstract this out later)
+	public static GameView getView() {
+		return view;
 	}
 	
 	

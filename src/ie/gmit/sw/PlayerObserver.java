@@ -6,6 +6,7 @@ public class PlayerObserver implements KeyObserver{
 	
 	private Sprite player;
 	//private boolean isIsometric = true; //Toggle between 2D and Isometric (Z key)
+	private GameView view;
 	
 	public PlayerObserver() {
 		
@@ -26,7 +27,8 @@ public class PlayerObserver implements KeyObserver{
 		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			player.setDirection(Direction.DOWN);
 		} else if (e.getKeyCode() == KeyEvent.VK_Z) {
-			//toggleView();
+			view = GameWindow.getView();
+			view.toggleView();
 			System.out.println("Toggle View");
 		} else if (e.getKeyCode() == KeyEvent.VK_X) {
 			player.move();
