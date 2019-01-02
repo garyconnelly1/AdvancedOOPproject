@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author mary
+ * @author gary
  *
  */
 module gmit.sw {
