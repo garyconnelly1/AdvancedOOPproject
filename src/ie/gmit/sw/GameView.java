@@ -5,9 +5,6 @@ import java.awt.event.*;
 import java.awt.image.*;
 import javax.swing.*;
 import javax.swing.Timer;
-import javax.imageio.*;
-import java.io.*;
-import java.util.*;
 
 /*
  * This is a God class and is doing way too much. The instance variables cover everything from isometric to 
@@ -20,6 +17,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private static final int DEFAULT_IMAGE_INDEX = 0;
 	
 	ImageLoader loader;
+	IsoConverter converter;
 	
 	//Encapsulate the things that vary...
 	public static final int DEFAULT_VIEW_SIZE = 1280;
@@ -50,6 +48,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	}
 	
 	private void init() throws Exception {
+		converter = new IsoConverter();
 		loader = new ImageLoader();
 		tiles = loader.loadImages("./resources/images/ground", tiles);
 		objects = loader.loadImages("./resources/images/objects", objects);
@@ -79,8 +78,8 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 				if (imageIndex >= 0 && imageIndex < tiles.length) {
 					//Paint the ground tiles
 					if (isIsometric) {
-						x1 = getIsoX(col, row);
-						y1 = getIsoY(col, row);
+						x1 = converter.getIsoX(col, row);
+						y1 = converter.getIsoY(col, row);
 						
 						g2.drawImage(tiles[DEFAULT_IMAGE_INDEX], x1, y1, null);
 						if (imageIndex > DEFAULT_IMAGE_INDEX) {
@@ -107,25 +106,11 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		}
 		
 		//Paint the player on  the ground
-		point = getIso(player.getPosition().getX(), player.getPosition().getY());
+		point = converter.getIso(player.getPosition().getX(), player.getPosition().getY());
 		g2.drawImage(player.getImage(), point.getX(), point.getY(), null);
 	}
 	
-	//This method breaks the SRP
-	private int getIsoX(int x, int y) {
-		int rshift = (DEFAULT_VIEW_SIZE/2) - (TILE_WIDTH/2) + (x - y); //Pan camera to the right
-		return (x - y) * (TILE_WIDTH/2) + rshift;
-	}
-
-	//This method breaks the SRP
-	private int getIsoY(int x, int y) {
-		return (x + y) * (TILE_HEIGHT/2);
-	}
 	
-	//This method breaks the SRP
-	private Point getIso(int x, int y) {
-		return new Point(getIsoX(x, y), getIsoY(x, y)); //Could be more efficient...
-	}
 	
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
