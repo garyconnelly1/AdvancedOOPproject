@@ -14,15 +14,12 @@ import javax.swing.Timer;
  */
 public class GameView extends JPanel implements ActionListener, KeyListener { 
 	private static final long serialVersionUID = 777L;
-	private static final int DEFAULT_IMAGE_INDEX = 0;
 	
 	ImageLoader loader;
 	IsoConverter converter;
 	
-	//Encapsulate the things that vary...
-	public static final int DEFAULT_VIEW_SIZE = 1280;
-	private static final int TILE_WIDTH = 128;
-	private static final int TILE_HEIGHT = 64;
+	
+
 	private Sprite player;
 
 	//Do we really need two models like this?
@@ -52,7 +49,6 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		loader = new ImageLoader();
 		tiles = loader.loadImages("./resources/images/ground", tiles);
 		objects = loader.loadImages("./resources/images/objects", objects);
-		//player = new Sprite("Player 1", new Point(0, 0), loader.loadImages("./resources/images/sprites/default", null));
 		player = Player.getInstance("Player 1", new Point(0, 0), loader.loadImages("./resources/images/sprites/default", null));
 	}
 	
@@ -82,20 +78,21 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 						x1 = converter.getIsoX(col, row);
 						y1 = converter.getIsoY(col, row);
 						
-						g2.drawImage(tiles[DEFAULT_IMAGE_INDEX], x1, y1, null);
-						if (imageIndex > DEFAULT_IMAGE_INDEX) {
+						//g2.drawImage(tiles[DEFAULT_IMAGE_INDEX], x1, y1, null);
+						g2.drawImage(tiles[DefaultProperties.getDefaultImageIndex()], x1, y1, null);
+						if (imageIndex > DefaultProperties.getDefaultImageIndex()) {
 							g2.drawImage(tiles[imageIndex], x1, y1, null);
 						}
 					} else {
-						x1 = col * TILE_WIDTH;
-						y1 = row * TILE_HEIGHT;
+						x1 = col * DefaultProperties.getTileWidth();
+						y1 = row * DefaultProperties.getTileHeight();
 	        			if (imageIndex < cartesian.length) {
 	        				g2.setColor(cartesian[imageIndex]);
 	        			}else {
 	        				g2.setColor(Color.WHITE);
 	        			}
 						
-	        			g2.fillRect(x1, y1, TILE_WIDTH, TILE_WIDTH);
+	        			g2.fillRect(x1, y1, DefaultProperties.getTileWidth(), DefaultProperties.getTileWidth());
 					}
 					//Paint the object or things on the ground
 					
