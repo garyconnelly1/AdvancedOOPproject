@@ -54,7 +54,6 @@ public class GameWindow {
 		f.getContentPane().setLayout(new FlowLayout());
 		f.add(view);
 		f.addKeyListener(keyListener);
-	//	f.addKeyListener(view);
 		f.setSize(1000, 1000);
 		f.setLocation(100, 100);
 		f.pack();
