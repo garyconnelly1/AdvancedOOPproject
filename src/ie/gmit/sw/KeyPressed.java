@@ -5,17 +5,21 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class KeyPressed implements KeyListener, KeyObservable {
+	
+	private static KeyPressed instance = null;
 
 	private ArrayList<KeyObserver> objList;
 
-	public KeyPressed() {
-		objList = new ArrayList();
+	private KeyPressed() {
+		System.out.println("DEBUG: KeyPressed constructor");
+		objList = new ArrayList<KeyObserver>();
 	}
 
 	@Override
 	public void NotifyObservers(KeyEvent keyEvent) {
 
 		for (KeyObserver obs : objList) {
+			System.out.println("DEBUG: NotifyObservers");
 			obs.update(keyEvent);
 		}
 
@@ -34,7 +38,7 @@ public class KeyPressed implements KeyListener, KeyObservable {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-
+		System.out.println("DEBUG: Key pressed");
 		NotifyObservers(e);
 
 	}
@@ -48,5 +52,17 @@ public class KeyPressed implements KeyListener, KeyObservable {
 	public void keyTyped(KeyEvent e) {
 
 	}
+	
+	public static KeyPressed getInstance() {
+		System.out.println("DEBUG: KeyPressed getInstance");
+		if (instance == null) {
+			instance = new KeyPressed();
+		}
+
+		return instance;
+
+	}
+	
+	
 
 }

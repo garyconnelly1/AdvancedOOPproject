@@ -3,10 +3,12 @@ package ie.gmit.sw;
 import java.awt.*;
 import javax.swing.*;
 public class GameWindow {
-	/*
+	 /*
 	 * This matrix represents the isometric game model, with each number mapping to an
 	 * image in the images/ground/ directory.
 	 */
+	
+	
 	private int[][] model = { 
 			{ 1, 0, 0, 0, 0, 0 , 0, 0, 0, 2},
 			{ 0, 1, 0, 0, 0, 0 , 0, 0, 0, 2},
@@ -35,20 +37,27 @@ public class GameWindow {
 	};
 	
 	public GameWindow() throws Exception {
+		
+		KeyPressed keyListener = KeyPressed.getInstance();
 		GameView view = new GameView(model, objects);
 		Dimension d = new Dimension(GameView.DEFAULT_VIEW_SIZE, GameView.DEFAULT_VIEW_SIZE/2);
 		view.setPreferredSize(d);
 		view.setMinimumSize(d);
 		view.setMaximumSize(d);
+		
+		new PlayerObserver();
 
 		JFrame f = new JFrame("GMIT - B.Sc. in Computing (Software Development)");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.getContentPane().setLayout(new FlowLayout());
 		f.add(view);
-		f.addKeyListener(view);
+		f.addKeyListener(keyListener);
+	//	f.addKeyListener(view);
 		f.setSize(1000, 1000);
 		f.setLocation(100, 100);
 		f.pack();
 		f.setVisible(true);
 	}
+	
+	
 }
