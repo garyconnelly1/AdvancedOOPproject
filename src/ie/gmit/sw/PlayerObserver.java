@@ -9,7 +9,8 @@ public class PlayerObserver implements KeyObserver{
 	
 	public PlayerObserver() {
 		
-		player = Player.getInstance();
+	//	player = Player.getInstance();
+		player = SpriteFactory.getSprite("PLAYER");
 		KeyPressed keyPressed = KeyPressed.getInstance(); // Because we want to get a handle on the same KeyPressed listener from multiple classes.
 		keyPressed.AddObserver(this);
 		
