@@ -74,7 +74,7 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 	
 	public void move() { //This method is suspiciously like one I've seen already....
 		step(direction);
-		
+		System.out.println("DEBUG: MOVE!!!!!!!!!!!!");
 		switch(direction.getOrientation()) {
 		case 1:
 			if(position.getY() + 1 < 10)

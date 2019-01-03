@@ -58,6 +58,7 @@ public class GameWindow {
 		view.setMaximumSize(d);
 		
 		new PlayerObserver();
+		new KnightObserver();
 
 		JFrame f = new JFrame("GMIT - B.Sc. in Computing (Software Development)");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
