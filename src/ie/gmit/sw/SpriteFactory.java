@@ -1,6 +1,7 @@
 package ie.gmit.sw;
 
 import java.awt.image.BufferedImage;
+import ie.gmit.sw.models.*;
 
 public class SpriteFactory {
 

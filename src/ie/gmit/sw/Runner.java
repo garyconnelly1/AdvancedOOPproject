@@ -1,5 +1,7 @@
 package ie.gmit.sw;
 
+import ie.gmit.sw.views.GameWindow;
+
 public class Runner {
 	public static void main(String[] args) throws Exception {
 		//Can read in necessary information here and process it before going any further...

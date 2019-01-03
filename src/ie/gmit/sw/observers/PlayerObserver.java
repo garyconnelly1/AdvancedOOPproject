@@ -1,6 +1,10 @@
-package ie.gmit.sw;
+package ie.gmit.sw.observers;
 
 import java.awt.event.KeyEvent;
+import ie.gmit.sw.*;
+import ie.gmit.sw.views.GameWindow;
+import ie.gmit.sw.views.GameView;
+import ie.gmit.sw.models.Sprite;
 
 public class PlayerObserver implements KeyObserver{
 	

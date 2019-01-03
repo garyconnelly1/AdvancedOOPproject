@@ -1,5 +1,7 @@
 package ie.gmit.sw;
 
+import ie.gmit.sw.models.*;
+
 public class IsoConverter implements IsoConvertable{
 	
 	

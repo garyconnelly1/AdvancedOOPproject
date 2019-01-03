@@ -1,5 +1,7 @@
 package ie.gmit.sw;
 
+import ie.gmit.sw.models.*;
+
 /*
  * Interface that allows any class to add an their own 
  * implementation of isometric conversions.  

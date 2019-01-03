@@ -1,4 +1,4 @@
-package ie.gmit.sw;
+package ie.gmit.sw.models;
 
 /*
  *   
@@ -12,6 +12,8 @@ package ie.gmit.sw;
  */
 
 import java.awt.image.*;
+import ie.gmit.sw.*;
+
 public class Sprite { //Sprite belongs in some sort of hierarchy....
 	private String name; //The name of the sprite
 	private BufferedImage[][] images = new BufferedImage[4][3]; //The images used in the animation 

@@ -1,10 +1,14 @@
-package ie.gmit.sw;
+package ie.gmit.sw.views;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import javax.swing.*;
 import javax.swing.Timer;
+import ie.gmit.sw.*;
+import ie.gmit.sw.models.*;
+import ie.gmit.sw.models.Point;
+
 
 /*
  * This is a God class and is doing way too much. The instance variables cover everything from isometric to 

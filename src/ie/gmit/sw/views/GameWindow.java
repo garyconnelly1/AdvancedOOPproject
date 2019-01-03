@@ -1,7 +1,11 @@
-package ie.gmit.sw;
+package ie.gmit.sw.views;
 
 import java.awt.*;
 import javax.swing.*;
+
+import ie.gmit.sw.*;
+import ie.gmit.sw.observers.*;
+
 public class GameWindow {
 	 /*
 	 * This matrix represents the isometric game model, with each number mapping to an
