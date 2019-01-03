@@ -10,15 +10,16 @@ public class DefaultProperties {
 	private static int DEFAULT_IMAGE_INDEX = 0;
 	private static int DEFAULT_VIEW_SIZE = 1280;
 	private static int TILE_WIDTH = 128;
-	private static int TILE_HEIGHT = 64;
+	private static int TILE_HEIGHT = 64; 
 	
-/*	
+	/*
 	private static int DEFAULT_IMAGE_INDEX;
 	private static int DEFAULT_VIEW_SIZE;
 	private static int TILE_WIDTH;
 	private static int TILE_HEIGHT;
 	private static String tempProperty;
 	*/
+	
 	
 	public DefaultProperties() {}
 	
@@ -48,7 +49,7 @@ public class DefaultProperties {
 		
 		try {
 			//appProps.load(new FileInputStream(rootPath));
-			appProps.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("/IsoAssignment/src/ie/gmit/sw/properties/app.properties"));
+			appProps.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("app.properties"));
 		} catch (FileNotFoundException e) {
 			
 			e.printStackTrace();

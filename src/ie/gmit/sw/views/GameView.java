@@ -55,7 +55,6 @@ public class GameView extends JPanel implements ActionListener {
 		loader = new ImageLoader();
 		tiles = loader.loadImages("./resources/images/ground", tiles);
 		objects = loader.loadImages("./resources/images/objects", objects);
-		//player = Player.getInstance("Player 1", new Point(0, 0), loader.loadImages("./resources/images/sprites/default", null));
 		player = SpriteFactory.getSprite("PLAYER","Player 1", new Point(0, 0), loader.loadImages("./resources/images/sprites/default", null));
 	}
 
