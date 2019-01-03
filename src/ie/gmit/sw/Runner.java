@@ -1,5 +1,7 @@
 package ie.gmit.sw;
 
+import javax.swing.JOptionPane;
+
 import ie.gmit.sw.views.GameWindow;
 
 public class Runner {
@@ -21,7 +23,8 @@ public class Runner {
 					 */
 						new GameWindow(); //Could be done nicer?
 				} catch (Exception e) {
-					e.printStackTrace(); //Real lazy stuff here...
+					JOptionPane.showMessageDialog(null, "There was an Error launching the Game Window", "Error", JOptionPane.ERROR_MESSAGE);
+					e.printStackTrace();
 				}
 			}
 		});

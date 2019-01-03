@@ -8,6 +8,7 @@ import javax.swing.Timer;
 import ie.gmit.sw.*;
 import ie.gmit.sw.models.*;
 import ie.gmit.sw.models.Point;
+import ie.gmit.sw.properties.DefaultProperties;
 
 
 /*

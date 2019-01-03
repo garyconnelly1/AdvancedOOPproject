@@ -77,16 +77,20 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 		
 		switch(direction.getOrientation()) {
 		case 1:
-			position.setY(position.getY() + 1); //UP
+			if(position.getY() + 1 < 10)
+				position.setY(position.getY() + 1); //UP
 			break;
 		case 2:
-			position.setX(position.getX() - 1); //DOWN
+			if(position.getX() - 1 > -1)
+				position.setX(position.getX() - 1); //DOWN
 			break;
 		case 3:
-			position.setX(position.getX() + 1); //LEFT
+			if(position.getX() + 1 < 10)
+				position.setX(position.getX() + 1); //LEFT
 			break;
 		default:
-			position.setY(position.getY() - 1); //RIGHT
+			if(position.getY() - 1 > -1)
+				position.setY(position.getY() - 1); //RIGHT
 			break;
 		}
 	}

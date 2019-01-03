@@ -5,6 +5,7 @@ import javax.swing.*;
 
 import ie.gmit.sw.*;
 import ie.gmit.sw.observers.*;
+import ie.gmit.sw.properties.DefaultProperties;
 
 public class GameWindow {
 	 /*
@@ -42,7 +43,7 @@ public class GameWindow {
 	};
 	
 	public GameWindow() throws Exception {
-		
+	//	DefaultProperties.loadProperties();
 		KeyPressed keyListener = KeyPressed.getInstance();
 		view = new GameView(model, objects);
 		//Dimension d = new Dimension(GameView.DEFAULT_VIEW_SIZE, GameView.DEFAULT_VIEW_SIZE/2);
