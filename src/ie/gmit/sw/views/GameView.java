@@ -3,6 +3,9 @@ package ie.gmit.sw.views;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
+import java.util.*;
+import java.util.List;
+
 import javax.swing.*;
 import javax.swing.Timer;
 import ie.gmit.sw.*;
@@ -24,7 +27,8 @@ public class GameView extends JPanel implements ActionListener {
 	private ImageLoader loader;
 	private IsoConverter converter;
 	private Sprite player;
-	private Sprite knight;
+	//private Sprite knight;
+	private List<Sprite> knights = new ArrayList<Sprite>();
 	
 
 	// Do we really need two models like this?
@@ -41,12 +45,13 @@ public class GameView extends JPanel implements ActionListener {
 	private Timer timer; // Controls the repaint interval.
 	private boolean isIsometric = true; // Toggle between 2D and Isometric (Z key)
 
-	public GameView(int[][] matrix, int[][] things, Sprite player, Sprite knight) throws Exception {
+	public GameView(int[][] matrix, int[][] things, Sprite player, List<Sprite> knights) throws Exception {
 		init();
 		this.matrix = matrix;
 		this.things = things;
 		this.player = (Player)player;
-		this.knight = (Knight)knight;
+		//this.knight = (Knight)knight;
+		this.knights = knights;
 
 		setBackground(Color.WHITE);
 		setDoubleBuffered(true); // Each image is buffered twice to avoid tearing / stutter
@@ -115,8 +120,11 @@ public class GameView extends JPanel implements ActionListener {
 		g2.drawImage(player.getImage(), point.getX(), point.getY(), null);
 		
 		// Paint Knight
-		point2 = converter.getIso(knight.getPosition().getX(), knight.getPosition().getY());
-		g2.drawImage(knight.getImage(), point2.getX(), point2.getY(), null);
+		for(Sprite knight: knights) {
+			point2 = converter.getIso(knight.getPosition().getX(), knight.getPosition().getY());
+			g2.drawImage(knight.getImage(), point2.getX(), point2.getY(), null);
+		}
+		
 		
 	}
 

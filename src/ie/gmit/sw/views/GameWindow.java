@@ -1,6 +1,10 @@
 package ie.gmit.sw.views;
 
 import java.awt.*;
+
+import java.util.*;
+import java.util.List;
+
 import javax.swing.*;
 
 import ie.gmit.sw.*;
@@ -18,6 +22,7 @@ public class GameWindow {
 	private static GameView view;
 	private static Sprite player;
 	private static Sprite knight;
+	private static List<Sprite> knights = new ArrayList<Sprite>();
 	private int[][] model = { 
 			{ 1, 0, 0, 0, 0, 0 , 0, 0, 0, 2},
 			{ 0, 1, 0, 0, 0, 0 , 0, 0, 0, 2},
@@ -50,8 +55,9 @@ public class GameWindow {
 		SpriteLoader spriteLoader = new SpriteLoader();
 		player = spriteLoader.loadPlayer();
 		knight = spriteLoader.loadKnights();
+		knights = spriteLoader.loadKnights(4);
 		KeyPressed keyListener = KeyPressed.getInstance();
-		view = new GameView(model, objects, player, knight);
+		view = new GameView(model, objects, player, knights);
 		Dimension d = new Dimension(DefaultProperties.getDefaultViewSize(), DefaultProperties.getDefaultViewSize()/2);
 		view.setPreferredSize(d);
 		view.setMinimumSize(d);
@@ -78,6 +84,10 @@ public class GameWindow {
 	
 	public static Sprite getKnight() {
 		return knight;
+	}
+	
+	public static List<Sprite> getKnights(){
+		return knights;
 	}
 	
 	
