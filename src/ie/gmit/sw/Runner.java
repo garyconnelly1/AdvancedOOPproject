@@ -23,10 +23,10 @@ public class Runner {
 					 */
 						new GameWindow(); //Could be done nicer?
 				} catch (Exception e) {
-					JOptionPane.showMessageDialog(null, "There was an Error launching the Game Window", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "There was an Error launching the Game Window", "Error", JOptionPane.ERROR_MESSAGE); // Add error box.
 					e.printStackTrace();
 				}
 			}
 		});
 	}
-}
+}   
