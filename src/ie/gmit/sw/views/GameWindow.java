@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import ie.gmit.sw.*;
+import ie.gmit.sw.models.*;
 import ie.gmit.sw.observers.*;
 import ie.gmit.sw.properties.DefaultProperties;
 
@@ -15,6 +16,8 @@ public class GameWindow {
 	
 	
 	private static GameView view;
+	private static Sprite player;
+	private static Sprite knight;
 	private int[][] model = { 
 			{ 1, 0, 0, 0, 0, 0 , 0, 0, 0, 2},
 			{ 0, 1, 0, 0, 0, 0 , 0, 0, 0, 2},
@@ -44,9 +47,11 @@ public class GameWindow {
 	
 	public GameWindow() throws Exception {
 	//	DefaultProperties.loadProperties();
+		SpriteLoader spriteLoader = new SpriteLoader();
+		player = spriteLoader.loadPlayer();
+		knight = spriteLoader.loadKnights();
 		KeyPressed keyListener = KeyPressed.getInstance();
-		view = new GameView(model, objects);
-		//Dimension d = new Dimension(GameView.DEFAULT_VIEW_SIZE, GameView.DEFAULT_VIEW_SIZE/2);
+		view = new GameView(model, objects, player, knight);
 		Dimension d = new Dimension(DefaultProperties.getDefaultViewSize(), DefaultProperties.getDefaultViewSize()/2);
 		view.setPreferredSize(d);
 		view.setMinimumSize(d);
@@ -68,6 +73,10 @@ public class GameWindow {
 	// Simple Accessor method to access the game view.(Abstract this out later)
 	public static GameView getView() {
 		return view;
+	}
+	
+	public static Sprite getKnight() {
+		return knight;
 	}
 	
 	

@@ -24,6 +24,8 @@ public class GameView extends JPanel implements ActionListener {
 	private ImageLoader loader;
 	private IsoConverter converter;
 	private Sprite player;
+	private Sprite knight;
+	
 
 	// Do we really need two models like this?
 	private int[][] matrix;
@@ -39,10 +41,12 @@ public class GameView extends JPanel implements ActionListener {
 	private Timer timer; // Controls the repaint interval.
 	private boolean isIsometric = true; // Toggle between 2D and Isometric (Z key)
 
-	public GameView(int[][] matrix, int[][] things) throws Exception {
+	public GameView(int[][] matrix, int[][] things, Sprite player, Sprite knight) throws Exception {
 		init();
 		this.matrix = matrix;
 		this.things = things;
+		this.player = (Player)player;
+		this.knight = (Knight)knight;
 
 		setBackground(Color.WHITE);
 		setDoubleBuffered(true); // Each image is buffered twice to avoid tearing / stutter
@@ -55,7 +59,6 @@ public class GameView extends JPanel implements ActionListener {
 		loader = new ImageLoader();
 		tiles = loader.loadImages("./resources/images/ground", tiles);
 		objects = loader.loadImages("./resources/images/objects", objects);
-		player = SpriteFactory.getSprite("PLAYER","Player 1", new Point(0, 0), loader.loadImages("./resources/images/sprites/default", null));
 	}
 
 	public void toggleView() {
@@ -72,6 +75,7 @@ public class GameView extends JPanel implements ActionListener {
 		Graphics2D g2 = (Graphics2D) g;
 		int imageIndex = -1, x1 = 0, y1 = 0;
 		Point point;
+		Point point2;
 
 		for (int row = 0; row < matrix.length; row++) {
 			for (int col = 0; col < matrix[row].length; col++) {
@@ -109,6 +113,11 @@ public class GameView extends JPanel implements ActionListener {
 		// Paint the player on the ground
 		point = converter.getIso(player.getPosition().getX(), player.getPosition().getY());
 		g2.drawImage(player.getImage(), point.getX(), point.getY(), null);
+		
+		// Paint Knight
+		point2 = converter.getIso(knight.getPosition().getX(), knight.getPosition().getY());
+		g2.drawImage(knight.getImage(), point2.getX(), point2.getY(), null);
+		
 	}
 
 }
