@@ -3,8 +3,7 @@ package ie.gmit.sw.models;
 public class Point {
 	private int x;
 	private int y;
-	
-	
+
 	public Point(int x, int y) {
 		super();
 		this.x = x;
@@ -26,6 +25,5 @@ public class Point {
 	public void setY(int y) {
 		this.y = y;
 	}
-	
-	
+
 }

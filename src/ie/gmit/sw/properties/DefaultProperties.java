@@ -36,39 +36,39 @@ public class DefaultProperties {
 	public static int getTileHeight() {
 		return TILE_HEIGHT;
 	}
-	/*
-	public static void loadProperties() {
-		//String rootPath = Thread.currentThread().getContextClassLoader().getResource("app.properties").getPath();
-		//String path = Thread.currentThread().getContextClassLoader().getResource("").getPath();
-		//String appConfigPath = rootPath + "app.properties";
-		
-		Properties appProps = new Properties();
-		
-		try {
-			//appProps.load(new FileInputStream(rootPath));
-			appProps.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("app.properties"));
-		} catch (FileNotFoundException e) {
-			
-			e.printStackTrace();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-		
-		tempProperty =  appProps.getProperty("DEFAULT_IMAGE_INDEX");
-		DEFAULT_IMAGE_INDEX = Integer.parseInt(tempProperty);
-		
-		tempProperty =  appProps.getProperty("DEFAULT_VIEW_SIZE");
-		DEFAULT_VIEW_SIZE =  Integer.parseInt(tempProperty);
-		
-		tempProperty =  appProps.getProperty("TILE_WIDTH");
-		TILE_WIDTH =  Integer.parseInt(tempProperty);
-		
-		tempProperty =  appProps.getProperty("TILE_HEIGHT");
-		TILE_HEIGHT =  Integer.parseInt(tempProperty);
-		
-		
-	}
-	*/
-
 }
+
+/*
+public static void loadProperties() {
+	//String rootPath = Thread.currentThread().getContextClassLoader().getResource("app.properties").getPath();
+	//String path = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+	//String appConfigPath = rootPath + "app.properties";
+	
+	Properties appProps = new Properties();
+	
+	try {
+		//appProps.load(new FileInputStream(rootPath));
+		appProps.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("app.properties"));
+	} catch (FileNotFoundException e) {
+		
+		e.printStackTrace();
+	} catch (IOException e) {
+		
+		e.printStackTrace();
+	}
+	
+	tempProperty =  appProps.getProperty("DEFAULT_IMAGE_INDEX");
+	DEFAULT_IMAGE_INDEX = Integer.parseInt(tempProperty);
+	
+	tempProperty =  appProps.getProperty("DEFAULT_VIEW_SIZE");
+	DEFAULT_VIEW_SIZE =  Integer.parseInt(tempProperty);
+	
+	tempProperty =  appProps.getProperty("TILE_WIDTH");
+	TILE_WIDTH =  Integer.parseInt(tempProperty);
+	
+	tempProperty =  appProps.getProperty("TILE_HEIGHT");
+	TILE_HEIGHT =  Integer.parseInt(tempProperty);
+	
+	
+}
+*/

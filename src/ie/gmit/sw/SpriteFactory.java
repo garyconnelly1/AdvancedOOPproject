@@ -6,9 +6,9 @@ import java.util.HashMap;
 import ie.gmit.sw.models.*;
 
 public class SpriteFactory {
-	
+
 	private static String key;
-	
+
 	@SuppressWarnings("rawtypes")
 	private static final HashMap knightMap = new HashMap();
 
@@ -43,20 +43,18 @@ public class SpriteFactory {
 		}
 
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public static Sprite flyweightKnight(String name, Point p, BufferedImage[] img) {
 		key = Integer.toString(p.getX()) + Integer.toString(p.getY());
-		Knight knight = (Knight)knightMap.get(key);
+		Knight knight = (Knight) knightMap.get(key);
 		System.out.println(key);
-		
-		if(knight == null) {
-			System.out.println("DEBUG: knight was null.");
-			knight = new Knight(name, p, img); 
-			knightMap.put(key,knight);
+
+		if (knight == null) {
+			knight = new Knight(name, p, img);
+			knightMap.put(key, knight);
 		}
-		System.out.println(knightMap.size());
-		
+
 		return knight;
 	}
 

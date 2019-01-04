@@ -6,12 +6,12 @@ import java.util.List;
 import ie.gmit.sw.SpriteFactory;
 
 public class SpriteLoader {
-	
+
 	private Sprite player;
 	private Sprite knight;
 	private ImageLoader loader;
 	private List<Sprite> knights = new ArrayList<Sprite>();
-	
+
 	public SpriteLoader() {
 		try {
 			init();
@@ -19,30 +19,30 @@ public class SpriteLoader {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void init() throws Exception {
 		this.loader = new ImageLoader();
-		this.player = SpriteFactory.getSprite("PLAYER","Player 1", new Point(0, 0), loader.loadImages("./resources/images/sprites/default", null));
-		this.knight = new Knight("Knight 1", new Point(5, 5), loader.loadImages("./resources/images/sprites/knight", null));
+		this.player = SpriteFactory.getSprite("PLAYER", "Player 1", new Point(0, 0),
+				loader.loadImages("./resources/images/sprites/default", null));
+		this.knight = new Knight("Knight 1", new Point(5, 5),
+				loader.loadImages("./resources/images/sprites/knight", null));
 	}
-	
+
 	public Sprite loadPlayer() {
 		return this.player;
 	}
-	
+
 	public Sprite loadKnights() {
 		return this.knight;
 	}
-	
+
 	public List<Sprite> loadKnights(int number) throws Exception {
-		for(int i = 0; i <= number; i++) {
-			knights.add(SpriteFactory.getSprite("KNIGHT","Knight " + i,  new Point((int)(Math.random()*10 ), (int)(Math.random()*10 )), loader.loadImages("./resources/images/sprites/knight", null)));
-			//knights.add(SpriteFactory.flyweightKnight("Knight " + i, new Point((int)(Math.random()*10 ), (int)(Math.random()*10 )), loader.loadImages("./resources/images/sprites/knight", null)));
-			//knights.add(SpriteFactory.flyweightKnight("Knight " + i, new Point(3,3), loader.loadImages("./resources/images/sprites/knight", null)));
+		for (int i = 0; i <= number; i++) {
+			knights.add(SpriteFactory.getSprite("KNIGHT", "Knight " + i,
+					new Point((int) (Math.random() * 10), (int) (Math.random() * 10)),
+					loader.loadImages("./resources/images/sprites/knight", null)));
 		}
 		return knights;
 	}
-	
-	
 
 }

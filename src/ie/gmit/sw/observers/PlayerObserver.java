@@ -6,18 +6,17 @@ import ie.gmit.sw.views.GameWindow;
 import ie.gmit.sw.views.GameView;
 import ie.gmit.sw.models.Sprite;
 
-public class PlayerObserver implements KeyObserver{
-	
+public class PlayerObserver implements KeyObserver {
+
 	private Sprite player;
 	private GameView view;
-	
+
 	public PlayerObserver() {
-		
-	//	player = Player.getInstance();
+
 		player = SpriteFactory.getSprite("PLAYER");
 		KeyPressed keyPressed = KeyPressed.getInstance(); // Because we want to get a handle on the same KeyPressed listener from multiple classes.
 		keyPressed.AddObserver(this);
-		
+
 	}
 
 	@Override
@@ -39,9 +38,7 @@ public class PlayerObserver implements KeyObserver{
 		} else {
 			return;
 		}
-		
-		
+
 	}
-	
 
 }
