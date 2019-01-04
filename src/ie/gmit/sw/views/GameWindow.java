@@ -21,6 +21,7 @@ public class GameWindow {
 	
 	private static GameView view;
 	private static Sprite player;
+	private KeyPressed keyListener;
 	private static List<Sprite> knights = new ArrayList<Sprite>();
 	private int[][] model = { 
 			{ 1, 0, 0, 0, 0, 0 , 0, 0, 0, 2},
@@ -50,19 +51,14 @@ public class GameWindow {
 	};
 	
 	public GameWindow() throws Exception {
-		SpriteLoader spriteLoader = new SpriteLoader();
-		player = spriteLoader.loadPlayer();
-		knights = spriteLoader.loadKnights(4);
-		KeyPressed keyListener = KeyPressed.getInstance();
+		initResources();
+		
 		view = new GameView(model, objects, player, knights);
 		Dimension d = new Dimension(DefaultProperties.getDefaultViewSize(), DefaultProperties.getDefaultViewSize()/2);
 		view.setPreferredSize(d);
 		view.setMinimumSize(d);
 		view.setMaximumSize(d);
 		
-		new PlayerObserver();
-		new KnightObserver();
-
 		JFrame f = new JFrame("GMIT - B.Sc. in Computing (Software Development)");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.getContentPane().setLayout(new FlowLayout());
@@ -82,6 +78,16 @@ public class GameWindow {
 	
 	public static List<Sprite> getKnights(){
 		return knights;
+	}
+	
+	public void initResources() throws Exception {
+		SpriteLoader spriteLoader = new SpriteLoader();
+		player = spriteLoader.loadPlayer();
+		knights = spriteLoader.loadKnights(4);
+		keyListener = KeyPressed.getInstance();
+		
+		new PlayerObserver();
+		new KnightObserver();
 	}
 	
 	
