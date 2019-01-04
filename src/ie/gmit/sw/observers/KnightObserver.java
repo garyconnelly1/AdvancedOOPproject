@@ -10,11 +10,9 @@ import ie.gmit.sw.views.GameWindow;
 
 public class KnightObserver implements KeyObserver {
 
-	// private Sprite knight;
 	private List<Sprite> knights;
 
 	public KnightObserver() {
-		// knight = GameWindow.getKnight();
 		knights = GameWindow.getKnights();
 		KeyPressed keyPressed = KeyPressed.getInstance(); // Because we want to get a handle on the same KeyPressed
 															// listener from multiple classes.

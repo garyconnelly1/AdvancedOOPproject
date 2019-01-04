@@ -27,7 +27,6 @@ public class GameView extends JPanel implements ActionListener {
 	private ImageLoader loader;
 	private IsoConverter converter;
 	private Sprite player;
-	//private Sprite knight;
 	private List<Sprite> knights = new ArrayList<Sprite>();
 	
 
@@ -50,7 +49,6 @@ public class GameView extends JPanel implements ActionListener {
 		this.matrix = matrix;
 		this.things = things;
 		this.player = (Player)player;
-		//this.knight = (Knight)knight;
 		this.knights = knights;
 
 		setBackground(Color.WHITE);
@@ -119,7 +117,7 @@ public class GameView extends JPanel implements ActionListener {
 		point = converter.getIso(player.getPosition().getX(), player.getPosition().getY());
 		g2.drawImage(player.getImage(), point.getX(), point.getY(), null);
 		
-		// Paint Knight
+		// Paint Knights
 		for(Sprite knight: knights) {
 			point2 = converter.getIso(knight.getPosition().getX(), knight.getPosition().getY());
 			g2.drawImage(knight.getImage(), point2.getX(), point2.getY(), null);

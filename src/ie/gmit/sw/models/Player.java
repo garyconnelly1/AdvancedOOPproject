@@ -30,7 +30,6 @@ public class Player extends Sprite {
 		
 		if (instance == null) {
 			instance = new Player(name, p, img);
-			System.out.println("DEBUG: Instance should not be null");
 		}
 
 		return instance;
@@ -42,7 +41,6 @@ public class Player extends Sprite {
 		if (instance != null) {
 			return instance;
 		} else {
-			System.out.println("DEBUG: Returning null");
 			return null;
 		}
 	}

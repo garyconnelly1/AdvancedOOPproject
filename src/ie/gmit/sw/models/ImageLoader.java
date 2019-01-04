@@ -8,9 +8,7 @@ import javax.imageio.ImageIO;
 
 public class ImageLoader {
 
-	public ImageLoader() {
-
-	}
+	public ImageLoader() {}
 
 	public BufferedImage[] loadImages(String directory, BufferedImage[] img) throws Exception {
 		File dir = new File(directory);

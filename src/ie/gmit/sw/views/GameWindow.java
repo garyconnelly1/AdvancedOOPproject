@@ -21,7 +21,6 @@ public class GameWindow {
 	
 	private static GameView view;
 	private static Sprite player;
-	private static Sprite knight;
 	private static List<Sprite> knights = new ArrayList<Sprite>();
 	private int[][] model = { 
 			{ 1, 0, 0, 0, 0, 0 , 0, 0, 0, 2},
@@ -51,10 +50,8 @@ public class GameWindow {
 	};
 	
 	public GameWindow() throws Exception {
-	//	DefaultProperties.loadProperties();
 		SpriteLoader spriteLoader = new SpriteLoader();
 		player = spriteLoader.loadPlayer();
-		knight = spriteLoader.loadKnights();
 		knights = spriteLoader.loadKnights(4);
 		KeyPressed keyListener = KeyPressed.getInstance();
 		view = new GameView(model, objects, player, knights);
@@ -82,9 +79,6 @@ public class GameWindow {
 		return view;
 	}
 	
-	public static Sprite getKnight() {
-		return knight;
-	}
 	
 	public static List<Sprite> getKnights(){
 		return knights;

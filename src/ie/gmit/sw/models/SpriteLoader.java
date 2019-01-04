@@ -36,7 +36,6 @@ public class SpriteLoader {
 	
 	public List<Sprite> loadKnights(int number) throws Exception {
 		for(int i = 0; i <= number; i++) {
-			//knights.add(new Knight("Knight " + i, new Point(i + 3, i + 4), loader.loadImages("./resources/images/sprites/knight", null)));
 			knights.add(SpriteFactory.getSprite("KNIGHT","Knight " + i, new Point(i + 3, i + 4), loader.loadImages("./resources/images/sprites/knight", null)));
 		}
 		return knights;
