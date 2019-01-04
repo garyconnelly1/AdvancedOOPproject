@@ -17,7 +17,7 @@ public class SpriteFactory {
 		if (type.equals("PLAYER")) {
 			return Player.getInstance(name, p, img);
 		} else if (type.equals("KNIGHT")) {
-			return new Knight(name, p, img);
+			return flyweightKnight(name, p, img);
 		} else {
 			return null;
 		}
