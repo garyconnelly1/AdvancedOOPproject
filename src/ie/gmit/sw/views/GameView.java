@@ -28,6 +28,7 @@ public class GameView extends JPanel implements ActionListener {
 	private IsoConverter converter;
 	private Sprite player;
 	private List<Sprite> knights = new ArrayList<Sprite>();
+	private CollisionDetection collider;
 	
 
 	// Do we really need two models like this?
@@ -62,6 +63,7 @@ public class GameView extends JPanel implements ActionListener {
 		loader = new ImageLoader();
 		tiles = loader.loadImages("./resources/images/ground", tiles);
 		objects = loader.loadImages("./resources/images/objects", objects);
+		collider = new CollisionDetection();
 	}
 
 	public void toggleView() {
@@ -79,6 +81,10 @@ public class GameView extends JPanel implements ActionListener {
 		int imageIndex = -1, x1 = 0, y1 = 0;
 		Point point;
 		Point point2;
+		
+		for(Sprite knight: knights) {
+			collider.detectCollision(player, knight);
+		}
 
 		for (int row = 0; row < matrix.length; row++) {
 			for (int col = 0; col < matrix[row].length; col++) {

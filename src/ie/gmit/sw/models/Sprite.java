@@ -20,6 +20,7 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 	private Direction direction = Direction.DOWN; //The current orientation of the sprite
 	private int index = 0; //The current image index.
 	private Point position; //The current x, y position
+	private String coordinate;
 	
 	public Sprite(String name, Point p) {
 		super();
@@ -92,5 +93,12 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 				position.setY(position.getY() - 1); //RIGHT
 			break;
 		}
+	}
+	
+	public String getPointAsString() {
+		
+		coordinate = Integer.toString(position.getX()) + Integer.toString(position.getY());
+		
+		return coordinate;
 	}
 }
