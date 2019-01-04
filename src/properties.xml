@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-    <comment>xml properties</comment>
-    <entry key="DEFAULT_IMAGE_INDEX">0</entry>
-    <entry key="DEFAULT_VIEW_SIZE">1280</entry>
-    <entry key="TILE_WIDTH">128</entry>
-     <entry key="TILE_HEIGHT">64</entry>
-</properties>
