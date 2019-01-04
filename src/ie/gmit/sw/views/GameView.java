@@ -29,6 +29,7 @@ public class GameView extends JPanel implements ActionListener {
 	private Sprite player;
 	private List<Sprite> knights = new ArrayList<Sprite>();
 	private CollisionDetection collider;
+	private boolean isCollided = false;
 	
 
 	// Do we really need two models like this?
@@ -56,6 +57,8 @@ public class GameView extends JPanel implements ActionListener {
 		setDoubleBuffered(true); // Each image is buffered twice to avoid tearing / stutter
 		timer = new Timer(100, this); // calls the actionPerformed() method every 100ms
 		timer.start(); // Start the timer
+		
+		
 	}
 
 	private void init() throws Exception {
@@ -72,7 +75,14 @@ public class GameView extends JPanel implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) { // This is called each time the timer reaches zero
-		this.repaint();
+		if(!this.isCollided) {
+			this.repaint();
+		}
+		else {
+			timer.stop();
+			JOptionPane.showMessageDialog(null, "You hit a knight so you lose. Please close the game and try again", "Ooops", JOptionPane.PLAIN_MESSAGE); // Add error box.
+		}
+		
 	}
 
 	public void paintComponent(Graphics g) { // This method needs to execute quickly...
@@ -83,7 +93,9 @@ public class GameView extends JPanel implements ActionListener {
 		Point point2;
 		
 		for(Sprite knight: knights) {
-			collider.detectCollision(player, knight);
+			if(collider.detectCollision(player, knight) == true) {
+				this.isCollided = true;
+			}
 		}
 
 		for (int row = 0; row < matrix.length; row++) {

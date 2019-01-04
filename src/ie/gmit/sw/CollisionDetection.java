@@ -7,9 +7,12 @@ public class CollisionDetection {
 	public CollisionDetection() {
 	}
 
-	public void detectCollision(Sprite player, Sprite knight) {
+	public boolean detectCollision(Sprite player, Sprite knight) {
 		if (player.getPointAsString().equals(knight.getPointAsString())) {
-			System.out.println("HIT!!");
+			return true;
+		}
+		else {
+			return false;
 		}
 
 	}
