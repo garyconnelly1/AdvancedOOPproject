@@ -10,7 +10,6 @@ public class CollisionDetection {
 	public void detectCollision(Sprite player, Sprite knight) {
 		if (player.getPointAsString().equals(knight.getPointAsString())) {
 			System.out.println("HIT!!");
-
 		}
 
 	}
