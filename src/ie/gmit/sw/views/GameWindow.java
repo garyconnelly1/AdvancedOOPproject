@@ -30,10 +30,10 @@ public class GameWindow {
 			{ 0, 0, 0, 1, 0, 0 , 0, 0, 0, 2},
 			{ 2, 2, 2, 2, 1, 0 , 0, 0, 0, 2},
 			{ 3, 3, 3, 3, 1, 1 , 1, 0, 0, 1},
-			{ 5, 5, 5, 5, 3, 3 , 1, 0, 0, 1},
-			{ 4, 4, 4, 5, 3, 3 , 1, 0, 0, 0},
-			{ 4, 4, 4, 4, 5, 3 , 1, 6, 6, 6},
-			{ 4, 4, 4, 4, 4, 3 , 1, 7, 7, 7}
+			{ 3, 3, 3, 3, 3, 3 , 1, 0, 0, 1},
+			{ 3, 3, 3, 3, 3, 3 , 1, 0, 0, 0},
+			{ 3, 3, 3, 3, 3, 3 , 1, 6, 6, 6},
+			{ 3, 3, 3, 3, 3, 3 , 1, 7, 7, 7}
 	};
 	
 	//This matrix is a representation of where objects (things) in the game are placed
@@ -42,9 +42,9 @@ public class GameWindow {
 			{ 5, 0, 0, 0, 5, 5 , 5, 5, 5, 0},
 			{ 5, 5, 0, 0, 0, 5 , 5, 5, 5, 9},
 			{ 5, 5, 2, 0, 0, 0 , 5, 5, 5, 0},
-			{ 0, 0, 0, 0, 0, 0 , 0, 5, 5, 0},
-			{ 0, 0, 0, 0, 0, 0 , 0, 0, 5, 0},
-			{ 0, 0, 0, 0, 0, 3 , 0, 0, 0, 0},
+			{ 0, 0, 0, 0, 1, 0 , 0, 5, 5, 0},
+			{ 0, 0, 0, 0, 1, 0 , 0, 0, 5, 0},
+			{ 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0},
 			{ 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0},
 			{ 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0},
 			{ 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0}
@@ -81,6 +81,10 @@ public class GameWindow {
 	}
 	
 	public void initResources() throws Exception {
+		objects[(int) (Math.random() * 10)][(int) (Math.random() * 10)] = 3;
+		objects[(int) (Math.random() * 10)][(int) (Math.random() * 10)] = 3;
+		objects[(int) (Math.random() * 10)][(int) (Math.random() * 10)] = 3;
+		objects[(int) (Math.random() * 10)][(int) (Math.random() * 10)] = 8;
 		SpriteLoader spriteLoader = new SpriteLoader();
 		player = spriteLoader.loadPlayer();
 		knights = spriteLoader.loadKnights(4);
@@ -89,6 +93,4 @@ public class GameWindow {
 		new PlayerObserver();
 		new KnightObserver();
 	}
-	
-	
 }
