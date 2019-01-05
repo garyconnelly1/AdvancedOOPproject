@@ -38,19 +38,28 @@ public class GameWindow {
 	
 	//This matrix is a representation of where objects (things) in the game are placed
 	private int[][] objects = { 
-			{ 0, 0, 0, 5, 5, 5 , 5, 5, 5, 0},
+			{ 0, 0, 0, 5, 5, 5 , 3, 5, 5, 0},
 			{ 5, 0, 0, 0, 5, 5 , 5, 5, 5, 0},
 			{ 5, 5, 0, 0, 0, 5 , 5, 5, 5, 9},
 			{ 5, 5, 2, 0, 0, 0 , 5, 5, 5, 0},
 			{ 0, 0, 0, 0, 1, 0 , 0, 5, 5, 0},
-			{ 0, 0, 0, 0, 1, 0 , 0, 0, 5, 0},
+			{ 0, 0, 8, 0, 1, 0 , 0, 0, 5, 0},
+			{ 0, 0, 3, 0, 0, 0 , 0, 0, 0, 0},
 			{ 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0},
-			{ 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0},
-			{ 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0},
+			{ 0, 0, 0, 0, 0, 0 , 0, 3, 0, 0},
 			{ 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0}
 	};
 	
 	public GameWindow() throws Exception {
+		/*
+		for(int i = 0; i < objects.length; i++) {
+			for(int j = 0; j < objects[i].length; j++) {
+				if(objects[i][j] == 9) {
+					System.out.println(i + "  " + j);
+				}
+			}
+			
+		}*/ 
 		initResources();
 		
 		view = new GameView(model, objects, player, knights);
@@ -81,12 +90,13 @@ public class GameWindow {
 	}
 	
 	public void initResources() throws Exception {
-		objects[(int) (Math.random() * 10)][(int) (Math.random() * 10)] = 3;
-		objects[(int) (Math.random() * 10)][(int) (Math.random() * 10)] = 3;
-		objects[(int) (Math.random() * 10)][(int) (Math.random() * 10)] = 3;
-		objects[(int) (Math.random() * 10)][(int) (Math.random() * 10)] = 8;
+		//objects[(int) (Math.random() * 10)][(int) (Math.random() * 10)] = 3;
+		//objects[(int) (Math.random() * 10)][(int) (Math.random() * 10)] = 3;
+		//objects[(int) (Math.random() * 10)][(int) (Math.random() * 10)] = 3;
+		
 		SpriteLoader spriteLoader = new SpriteLoader();
 		player = spriteLoader.loadPlayer();
+		System.out.println(player.getPointAsString());
 		knights = spriteLoader.loadKnights(4);
 		keyListener = KeyPressed.getInstance();
 		

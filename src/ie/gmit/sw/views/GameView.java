@@ -30,6 +30,7 @@ public class GameView extends JPanel implements ActionListener {
 	private List<Sprite> knights = new ArrayList<Sprite>();
 	private CollisionDetection collider;
 	private boolean isCollided = false;
+	private boolean gameOver = false;
 	
 
 	// Do we really need two models like this?
@@ -75,10 +76,13 @@ public class GameView extends JPanel implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) { // This is called each time the timer reaches zero
-		if(!this.isCollided) {
+		
+		if(gameOver == true) {
+			timer.stop();
+			JOptionPane.showMessageDialog(null, "Congradulations, you win!", "Victory!!", JOptionPane.PLAIN_MESSAGE); // Add error box.
+		} else if(!this.isCollided ) {
 			this.repaint();
-		}
-		else {
+		} else {
 			timer.stop();
 			JOptionPane.showMessageDialog(null, "You hit a knight so you lose. Please close the game and try again", "Ooops", JOptionPane.PLAIN_MESSAGE); // Add error box.
 		}
@@ -96,6 +100,10 @@ public class GameView extends JPanel implements ActionListener {
 			if(collider.detectCollision(player, knight) == true) {
 				this.isCollided = true;
 			}
+		}
+		
+		if(GameController.winCondition(player) == true) {
+			this.gameOver = true;
 		}
 
 		for (int row = 0; row < matrix.length; row++) {
