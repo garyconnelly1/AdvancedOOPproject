@@ -1,4 +1,4 @@
-package ie.gmit.sw;
+package ie.gmit.sw.controllers;
 
 import ie.gmit.sw.models.*;
 
