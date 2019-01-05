@@ -54,7 +54,7 @@ public class GameWindow {
 		/*
 		for(int i = 0; i < objects.length; i++) {
 			for(int j = 0; j < objects[i].length; j++) {
-				if(objects[i][j] == 8) {
+				if(objects[i][j] == 1) {
 					System.out.println(i + "  " + j);
 				}
 			}
