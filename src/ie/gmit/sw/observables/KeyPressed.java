@@ -1,6 +1,7 @@
-package ie.gmit.sw;
+package ie.gmit.sw.observables;
 
 import java.awt.event.KeyEvent;
+
 import ie.gmit.sw.observers.*;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;

@@ -9,6 +9,7 @@ import javax.swing.*;
 
 import ie.gmit.sw.*;
 import ie.gmit.sw.models.*;
+import ie.gmit.sw.observables.KeyPressed;
 import ie.gmit.sw.observers.*;
 import ie.gmit.sw.properties.DefaultProperties;
 

@@ -5,6 +5,7 @@ import ie.gmit.sw.*;
 import ie.gmit.sw.views.GameWindow;
 import ie.gmit.sw.views.GameView;
 import ie.gmit.sw.models.Sprite;
+import ie.gmit.sw.observables.KeyPressed;
 
 public class PlayerObserver implements KeyObserver {
 

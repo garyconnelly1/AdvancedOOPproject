@@ -4,8 +4,8 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 
 import ie.gmit.sw.Direction;
-import ie.gmit.sw.KeyPressed;
 import ie.gmit.sw.models.*;
+import ie.gmit.sw.observables.KeyPressed;
 import ie.gmit.sw.views.GameWindow;
 
 public class KnightObserver implements KeyObserver {
