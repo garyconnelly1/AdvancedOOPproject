@@ -84,7 +84,7 @@ public class GameView extends JPanel implements ActionListener {
 			this.repaint();
 		} else {
 			timer.stop();
-			JOptionPane.showMessageDialog(null, "You hit a knight so you lose. Please close the game and try again", "Ooops", JOptionPane.PLAIN_MESSAGE); // Add error box.
+			JOptionPane.showMessageDialog(null, "You lose. Please close the game and try again", "Ooops", JOptionPane.PLAIN_MESSAGE); // Add error box.
 		}
 		
 	}

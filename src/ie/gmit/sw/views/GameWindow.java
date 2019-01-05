@@ -54,12 +54,12 @@ public class GameWindow {
 		/*
 		for(int i = 0; i < objects.length; i++) {
 			for(int j = 0; j < objects[i].length; j++) {
-				if(objects[i][j] == 9) {
+				if(objects[i][j] == 8) {
 					System.out.println(i + "  " + j);
 				}
 			}
 			
-		}*/ 
+		}*/
 		initResources();
 		
 		view = new GameView(model, objects, player, knights);
