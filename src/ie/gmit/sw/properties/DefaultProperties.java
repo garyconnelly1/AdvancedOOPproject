@@ -9,15 +9,6 @@ public class DefaultProperties {
 	private static int TILE_WIDTH = 128;
 	private static int TILE_HEIGHT = 64; 
 	
-	/*
-	private static int DEFAULT_IMAGE_INDEX;
-	private static int DEFAULT_VIEW_SIZE;
-	private static int TILE_WIDTH;
-	private static int TILE_HEIGHT;
-	private static String tempProperty;
-	*/
-	
-	
 	public DefaultProperties() {}
 	
 	

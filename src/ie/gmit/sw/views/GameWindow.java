@@ -51,15 +51,7 @@ public class GameWindow {
 	};
 	
 	public GameWindow() throws Exception {
-		/*
-		for(int i = 0; i < objects.length; i++) {
-			for(int j = 0; j < objects[i].length; j++) {
-				if(objects[i][j] == 1) {
-					System.out.println(i + "  " + j);
-				}
-			}
-			
-		}*/
+		
 		initResources();
 		
 		view = new GameView(model, objects, player, knights);
@@ -90,9 +82,6 @@ public class GameWindow {
 	}
 	
 	public void initResources() throws Exception {
-		//objects[(int) (Math.random() * 10)][(int) (Math.random() * 10)] = 3;
-		//objects[(int) (Math.random() * 10)][(int) (Math.random() * 10)] = 3;
-		//objects[(int) (Math.random() * 10)][(int) (Math.random() * 10)] = 3;
 		
 		SpriteLoader spriteLoader = new SpriteLoader();
 		player = spriteLoader.loadPlayer();
