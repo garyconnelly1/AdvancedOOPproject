@@ -11,22 +11,41 @@ package ie.gmit.sw.models;
  * 
  */
 
+/**
+* Represents a Sprite object and is a superclass for Player and Knight.
+*
+* @author Gary Connlly
+*/
+
 import java.awt.image.*;
 import ie.gmit.sw.*;
 
-public class Sprite { //Sprite belongs in some sort of hierarchy....
-	private String name; //The name of the sprite
-	private BufferedImage[][] images = new BufferedImage[4][3]; //The images used in the animation 
-	private Direction direction = Direction.DOWN; //The current orientation of the sprite
-	private int index = 0; //The current image index.
-	private Point position; //The current x, y position
+public class Sprite {
+	private String name; 
+	private BufferedImage[][] images = new BufferedImage[4][3]; 
+	private Direction direction = Direction.DOWN; 
+	private int index = 0; 
+	private Point position; 
 	private String coordinate;
+	
+	/**
+	 * Creates a Sprite object using the parameterized values.
+	 * @param name The name for the Sprite.
+	 * @param p The Point for the Sprite.
+	 */
 	
 	public Sprite(String name, Point p) {
 		super();
 		this.name = name;
 		this.position = p;
 	}
+	
+	/**
+	 * Creates a Sprite object using the parameterized values.
+	 * @param name The name for the Sprite.
+	 * @param p The Point for the Sprite.
+	 * @param img The image array for the Sprite.
+	 */
 	
 	public Sprite(String name, Point p, BufferedImage[] img) {
 		this(name, p);
@@ -42,18 +61,39 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 		}
 	}
 	
+	/**
+	 * Returns the name of the Sprite.
+	 * @return name String name for the Sprite.
+	 */
+	
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Returns the Point the Sprite is on.
+	 * @return position Point.
+	 */
 	public Point getPosition() {
 		return position;
 	}
 
+	/**
+	 * Returns the buffered image for the Sprite.
+	 * @return Buffered image.
+	 */
 	public BufferedImage getImage() {
 		return images[direction.getOrientation()][index];
 	}
 	
+	
+	/**
+	 * Returns the image for the Sprite taking a step in the specified direction
+	 * by looping through the array of Sprite images to find the one corresponding with the
+	 * given direction. 
+	 * @param d The direction the Sprite is facing.
+	 * @return Buffered image of the Sprite.
+	 */
 	public BufferedImage step(Direction d) {
 		setDirection(d);
 		if (index < images[direction.getOrientation()].length - 1) {
@@ -65,15 +105,30 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 		return images[d.getOrientation()][index];
 	}
 	
+	/**
+	 * Sets the direction for the Sprite.
+	 * @param d The enumeration direction for the Sprite.
+	 */
 	public void setDirection(Direction d) {
 		direction = d;
 	}
 	
+	/**
+	 * Returns the Sprite direction.
+	 * @return Direction enumeration.
+	 */
+	
     public Direction getDirection() {
         return this.direction;
     }
+    
+    /**
+     * Method for controlling how the Sprite moves.
+     * Uses the direction of the Sprite to change the point that the Sprite is standing on,
+     * giving the illusion of movement.
+     */
 	
-	public void move() { //This method is suspiciously like one I've seen already....
+	public void move() { 
 		step(direction);
 		switch(direction.getOrientation()) {
 		case 1:
@@ -95,6 +150,11 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 		}
 	}
 	
+	/**
+	 * Returns a String representation of the Sprite Point.
+	 * This makes it easier to compare Sprite positions to check for collisions.
+	 * @return Players point as a String.
+	 */
 	public String getPointAsString() {
 		
 		coordinate = Integer.toString(position.getX()) + Integer.toString(position.getY());

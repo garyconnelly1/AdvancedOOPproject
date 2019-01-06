@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.swing.*;
 
-import ie.gmit.sw.*;
+//import ie.gmit.sw.*;
 import ie.gmit.sw.models.*;
 import ie.gmit.sw.observables.KeyPressed;
 import ie.gmit.sw.observers.*;
@@ -37,7 +37,9 @@ public class GameWindow {
 			{ 3, 3, 3, 3, 3, 3 , 1, 7, 7, 7}
 	};
 	
-	//This matrix is a representation of where objects (things) in the game are placed
+	/**
+	 * This matrix is a representation of where objects (things) in the game are placed
+	 */
 	private int[][] objects = { 
 			{ 0, 0, 0, 5, 5, 5 , 3, 5, 5, 0},
 			{ 5, 0, 0, 0, 5, 5 , 5, 5, 5, 0},
@@ -51,12 +53,16 @@ public class GameWindow {
 			{ 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0}
 	};
 	
+	/**
+	 * Create the scene and add the view.
+	 * @throws Exception
+	 */
 	public GameWindow() throws Exception {
 		
 		initResources();
 		
-		view = new GameView(model, objects, player, knights);
-		Dimension d = new Dimension(DefaultProperties.getDefaultViewSize(), DefaultProperties.getDefaultViewSize()/2);
+		view = new GameView(model, objects, player, knights); // Initialize the view.
+		Dimension d = new Dimension(DefaultProperties.getDefaultViewSize(), DefaultProperties.getDefaultViewSize()/2); // Set dimensions.
 		view.setPreferredSize(d);
 		view.setMinimumSize(d);
 		view.setMaximumSize(d);
@@ -72,21 +78,30 @@ public class GameWindow {
 		f.setVisible(true);
 	}
 	
-	// Simple Accessor method to access the game view.(Abstract this out later)
+	/**
+	 * Simple Accessor method to access the game view.
+	 * @return view.
+	 */
 	public static GameView getView() {
 		return view;
 	}
 	
-	
+	/**
+	 * Simple Accessor method to access theknights in the game.
+	 * @return list of Knights.
+	 */
 	public static List<Sprite> getKnights(){
 		return knights;
 	}
 	
+	/**
+	 * Initialize any resources that the game needs.
+	 * @throws Exception
+	 */
 	public void initResources() throws Exception {
 		
 		SpriteLoader spriteLoader = new SpriteLoader();
 		player = spriteLoader.loadPlayer();
-		System.out.println(player.getPointAsString());
 		knights = spriteLoader.loadKnights(4);
 		keyListener = KeyPressed.getInstance();
 		

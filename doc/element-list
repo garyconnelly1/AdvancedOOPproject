@@ -1,0 +1,8 @@
+module:gmit.software
+ie.gmit.sw
+ie.gmit.sw.controllers
+ie.gmit.sw.models
+ie.gmit.sw.observables
+ie.gmit.sw.observers
+ie.gmit.sw.properties
+ie.gmit.sw.views

@@ -1,5 +1,11 @@
 package ie.gmit.sw.views;
 
+/**
+* Responsible for painting the view for the game..
+*
+* @author Gary Connlly
+*/
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
@@ -16,12 +22,8 @@ import ie.gmit.sw.models.Point;
 import ie.gmit.sw.properties.DefaultProperties;
 
 
-/*
- * This is a God class and is doing way too much. The instance variables cover everything from isometric to 
- * Cartesian drawing and the class has methods for loading images and converting from one coordinate space to
- * another.
- * 
- */
+
+ 
 public class GameView extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 777L;
 
@@ -49,6 +51,14 @@ public class GameView extends JPanel implements ActionListener {
 	private Timer timer; // Controls the repaint interval.
 	private boolean isIsometric = true; // Toggle between 2D and Isometric (Z key)
 
+	/**
+	 * Creates a GameView using the variables passed as parameters.
+	 * @param matrix Array used to paint the ground.
+	 * @param things Array used to paint the objects onto the ground.
+	 * @param player The Player object.
+	 * @param knights The Knight objects.
+	 * @throws Exception
+	 */
 	public GameView(int[][] matrix, int[][] things, Sprite player, List<Sprite> knights) throws Exception {
 		init();
 		this.matrix = matrix;
@@ -63,6 +73,11 @@ public class GameView extends JPanel implements ActionListener {
 		
 		
 	}
+	
+	/**
+	 * Initializes the values that will be painted onto the scene.
+	 * @throws Exception
+	 */
 
 	private void init() throws Exception {
 		converter = new IsoConverter();
@@ -72,25 +87,43 @@ public class GameView extends JPanel implements ActionListener {
 		collider = new CollisionDetection();
 	}
 
+	/**
+	 * Toggles the view between isometric and 2D.
+	 */
 	public void toggleView() {
 		isIsometric = !isIsometric;
 		this.repaint();
 	}
 
-	public void actionPerformed(ActionEvent e) { // This is called each time the timer reaches zero
-		
+	/**
+	 * This is called each time the timer reaches zero.
+	 */
+	public void actionPerformed(ActionEvent e) { 
+		/**
+		 * If the game is over, stop the timer, meaning the view will stop getting painted,
+		 * and inform he user accordingly.
+		 */
 		if(gameOver == true) {
 			timer.stop();
 			JOptionPane.showMessageDialog(null, "Congradulations, you win!", "Victory!!", JOptionPane.PLAIN_MESSAGE); // Add error box.
 		} else if(!this.isCollided ) {
+			/**
+			 * If the player had not collided with anything, continue to repaint the scene.
+			 */
 			this.repaint();
-		} else {
+		} else { 
+			/**
+			 * Meaning the player has lost the game, so stop the timer and inform the user accordingly.
+			 */
 			timer.stop();
 			JOptionPane.showMessageDialog(null, "You lose. Please close the game and try again", "Ooops", JOptionPane.PLAIN_MESSAGE); // Add error box.
 		}
 		
 	}
 
+	/**
+	 * Paint the view.
+	 */
 	public void paintComponent(Graphics g) { // This method needs to execute quickly...
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
@@ -98,16 +131,25 @@ public class GameView extends JPanel implements ActionListener {
 		Point point;
 		Point point2;
 		
+		/**
+		 * Check if the player collides with any of the knights. If he does, set isCollided to true.
+		 */
 		for(Sprite knight: knights) {
 			if(collider.detectCollision(player, knight) == true) {
 				this.isCollided = true;
 			}
 		}
 		
+		/**
+		 * If the win conditions are met, set the gameOver variable to true.
+		 */
 		if(GameController.winCondition(player) == true) {
 			this.gameOver = true;
 		}
 
+		/**
+		 * Draw the ground and objects.
+		 */
 		for (int row = 0; row < matrix.length; row++) {
 			for (int col = 0; col < matrix[row].length; col++) {
 				imageIndex = matrix[row][col];
@@ -134,18 +176,24 @@ public class GameView extends JPanel implements ActionListener {
 						g2.fillRect(x1, y1, DefaultProperties.getTileWidth(), DefaultProperties.getTileWidth());
 					}
 
-					// Paint the object or things on the ground
+					/**
+					 * Paint the object or things on the ground
+					 */
 					imageIndex = things[row][col];
 					g2.drawImage(objects[imageIndex], x1, y1, null);
 				}
 			}
 		}
 
-		// Paint the player on the ground
+		/**
+		 * Paint the player on the ground
+		 */
 		point = converter.getIso(player.getPosition().getX(), player.getPosition().getY());
 		g2.drawImage(player.getImage(), point.getX(), point.getY(), null);
 		
-		// Paint Knights
+		/**
+		 * Paint knights on the ground.
+		 */
 		for(Sprite knight: knights) {
 			point2 = converter.getIso(knight.getPosition().getX(), knight.getPosition().getY());
 			g2.drawImage(knight.getImage(), point2.getX(), point2.getY(), null);

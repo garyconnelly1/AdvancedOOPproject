@@ -1,0 +1,1 @@
+packageSearchIndex = [{"m":"gmit.software","l":"ie.gmit.sw"},{"m":"gmit.software","l":"ie.gmit.sw.controllers"},{"m":"gmit.software","l":"ie.gmit.sw.models"},{"m":"gmit.software","l":"ie.gmit.sw.observables"},{"m":"gmit.software","l":"ie.gmit.sw.observers"},{"m":"gmit.software","l":"ie.gmit.sw.properties"},{"m":"gmit.software","l":"ie.gmit.sw.views"}]

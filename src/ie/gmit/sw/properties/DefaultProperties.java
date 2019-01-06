@@ -1,5 +1,11 @@
 package ie.gmit.sw.properties;
 
+/**
+* Sets any default values that are to be used throughout the game.
+*
+* @author Gary Connlly
+*/
+
 
 
 public class DefaultProperties {
@@ -11,18 +17,36 @@ public class DefaultProperties {
 	
 	public DefaultProperties() {}
 	
-	
+	/**
+	 * Returns the integer for the default image index.
+	 * @return int DEFAULT_IMAGE_INDEX.
+	 */
 	public static int getDefaultImageIndex() {
 		return DEFAULT_IMAGE_INDEX;
 	}
+	
+	/**
+	 * Returns the integer for the default view size.
+	 * @return int DEFAULT_VIEW_SIZE.
+	 */
 
 	public static int getDefaultViewSize() {
 		return DEFAULT_VIEW_SIZE;
 	}
 
+	/**
+	 * Returns the integer for the tile width.
+	 * @return int TILE_WIDTH.
+	 */
+			
 	public static int getTileWidth() {
 		return TILE_WIDTH;
 	}
+	
+	/**
+	 * Returns the integer for the tile height.
+	 * @return int TILE_HEIGHT.
+	 */
 
 	public static int getTileHeight() {
 		return TILE_HEIGHT;

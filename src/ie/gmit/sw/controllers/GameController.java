@@ -2,6 +2,12 @@ package ie.gmit.sw.controllers;
 
 import ie.gmit.sw.models.*;
 
+/**
+* Class that checks if the win coditions for the game have been met.
+*
+* @author Gary Connlly
+*/
+
 public class GameController {
 
 	private static String chest1 = "60";
@@ -17,6 +23,16 @@ public class GameController {
 
 	public GameController() {
 	}
+	
+	/**
+	 * If the player has hit a chest, a boolean is set indicating that that chest has been hit.
+	 * If it has already been hit, it does not add to the players count.
+	 * Once the player has a count of greater than or equal to 2, and the player
+	 * hits the end point, the isWon variable will be set to <code>true</code> meaning that
+	 * the game is over.
+	 * @param player
+	 * @return
+	 */
 
 	public static boolean winCondition(Sprite player) {
 		compare = player.getPointAsString();
